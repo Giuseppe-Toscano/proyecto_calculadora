@@ -1,4 +1,3 @@
-
 import { suma } from './funciones/suma.js';
 import { promedio } from './funciones/promedio.js';
 import { multiplicacion } from './funciones/multiplicacion.js';
@@ -6,6 +5,7 @@ import { maximo } from './funciones/maximo.js';
 import { raiz } from './funciones/raiz.js';
 import { division } from './funciones/division.js';
 import { seno } from './funciones/seno.js';
+import { potencia } from './funciones/potencia.js';
 import { minimo } from './funciones/minimo.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -82,8 +82,13 @@ function calcular() {
   } else if (op === "seno") {
     resultado = seno(v1);
 
+  } else if (op === "potencia") {
+
+    resultado = potencia(v1, v2);
+
   } else if (op === "minimo") {
-    resultado = minimo(v1,v2);
+    resultado = minimo(v1, v2);
+
   } else {
     alert("Operación no válida");
     return;
