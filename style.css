@@ -1,18 +1,23 @@
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f4f8;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .container {
   background-color: white;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
+  max-width: 100%;
 }
 
 h1 {
@@ -26,12 +31,14 @@ label {
   font-weight: bold;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
@@ -51,4 +58,9 @@ button:hover {
 
 .resultado {
   margin-top: 15px;
+}
+
+
+[hidden] {
+  display: none !important;
 }

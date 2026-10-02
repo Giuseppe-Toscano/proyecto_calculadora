@@ -5,70 +5,90 @@ import { maximo } from './funciones/maximo.js';
 import { raiz } from './funciones/raiz.js';
 import { division } from './funciones/division.js';
 import { seno } from './funciones/seno.js';
+import { potencia } from './funciones/potencia.js';
 import { minimo } from './funciones/minimo.js';
 import { log } from './funciones/log.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  document.getElementById("btnCalcular").addEventListener("click", calcular);
+  const operacion = document.getElementById("operacion");
+  const valor1 = document.getElementById("valor1");
+  const valor2 = document.getElementById("valor2");
+  const labelValor2 = document.getElementById("labelValor2");
+  const btnCalcular = document.getElementById("btnCalcular");
+
+  // Mostrar u ocultar Valor 2 según la operación
+  function actualizarCampos() {
+    const esSeno = operacion.value === "seno";
+
+    valor2.hidden = esSeno;
+    labelValor2.hidden = esSeno;
+  }
+
+  // Actualizar los campos al cambiar de operación
+  operacion.addEventListener("change", actualizarCampos);
+
+  // Configurar los campos al cargar la página
+  actualizarCampos();
+
+  // Ejecutar el cálculo al pulsar el botón
+  btnCalcular.addEventListener("click", calcular);
 
 });
 
 function calcular() {
 
   const op = document.getElementById("operacion").value;
-
   const v1 = parseFloat(document.getElementById("valor1").value);
   const v2 = parseFloat(document.getElementById("valor2").value);
 
-  // El seno solamente necesita el Valor 1
-  if (op === "seno") {
+  // Validar los valores ingresados
+  if (isNaN(v1)) {
+    alert("Ingrese un valor válido para Valor 1");
+    return;
+  }
 
-    if (isNaN(v1)) {
-      alert("Ingrese un valor válido");
-      return;
-    }
-
-  } else {
-
-    if (isNaN(v1) || isNaN(v2)) {
-      alert("Ingrese valores válidos");
-      return;
-    }
-
+  // El seno solamente necesita el primer valor
+  if (op !== "seno" && isNaN(v2)) {
+    alert("Ingrese un valor válido para Valor 2");
+    return;
   }
 
   let resultado;
 
   if (op === "suma") {
-
     resultado = suma(v1, v2);
 
   } else if (op === "promedio") {
-
     resultado = promedio(v1, v2);
 
   } else if (op === "maximo") {
-
     resultado = maximo(v1, v2);
 
   } else if (op === "multiplicacion") {
-
     resultado = multiplicacion(v1, v2);
 
   } else if (op === "raiz") {
-
     resultado = raiz(v1, v2);
 
   } else if (op === "division") {
 
+    if (v2 === 0) {
+      alert("No se puede dividir entre cero");
+      return;
+    }
+
     resultado = division(v1, v2);
 
   } else if (op === "seno") {
-
     resultado = seno(v1);
 
+  } else if (op === "potencia") {
+
+    resultado = potencia(v1, v2);
+
   } else if (op === "minimo") {
+
     resultado = minimo(v1,v2);
     
   } else if (op === "log") {
@@ -76,12 +96,10 @@ function calcular() {
     resultado = log(v1, v2)
   
   } else {
-
     alert("Operación no válida");
     return;
-
   }
 
-  document.getElementById("resultado").innerText = "Resultado: " + resultado;
-
+  document.getElementById("resultado").innerText =
+    "Resultado: " + resultado;
 }
