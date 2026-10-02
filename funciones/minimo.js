@@ -3,17 +3,15 @@
 // Kevin Rodriguez ----> log(n)
 // D-DS-6-1
 
-export function minimo(v1,v2){
+export function minimo(v1, v2){
     // declaracion de variable del minimo
-    let minimo;
+    let resultado;
 
     // condicional if para verificar los valores entrantes
     if (v1<v2){
-        minimo = v1;
+        resultado = v1;
     } else {
-        minimo = v2;
+        resultado = v2;
     }
-    
-    return minimo;
-
+    return resultado;
 }

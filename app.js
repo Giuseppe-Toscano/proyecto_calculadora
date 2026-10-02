@@ -5,6 +5,7 @@ import { maximo } from './funciones/maximo.js';
 import { raiz } from './funciones/raiz.js';
 import { division } from './funciones/division.js';
 import { seno } from './funciones/seno.js';
+import { minimo } from './funciones/minimo.js';
 import { log } from './funciones/log.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -67,8 +68,11 @@ function calcular() {
 
     resultado = seno(v1);
 
+  } else if (op === "minimo") {
+    resultado = minimo(v1,v2);
+    
   } else if (op === "log") {
-
+   
     resultado = log(v1, v2)
   
   } else {
